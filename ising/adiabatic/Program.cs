@@ -108,7 +108,7 @@ namespace Microsoft.Quantum.Samples.Ising
             var numQubits = h.Length;
             for (int i = 0; i < 1 << numQubits; i++)
             {
-                var key = string.Join("", System.Convert.ToString(i, 2).PadLeft(numQubits, '0').Reverse());
+                var key = string.Join("", System.Convert.ToString(i, 2).PadLeft(numQubits, '0'));
                 var qubits = key.Select(s => s.Equals('1')).ToArray();
 
                 var energyForState = CalculateEnergyForStateCache(qubits, J, h);
@@ -182,7 +182,7 @@ namespace Microsoft.Quantum.Samples.Ising
                     var imaginaryPart = double.Parse(new Regex(@"-?[0-9][0-9,\.]+\si").Match(lineArr[1]).Value.Replace(" i", ""));
                     var probability = realPart * realPart + imaginaryPart * imaginaryPart;
 
-                    string key = string.Join("", System.Convert.ToString(i, 2).PadLeft(numQubits, '0').Reverse());
+                    string key = string.Join("", System.Convert.ToString(i, 2).PadLeft(numQubits, '0'));
                     var energy = energyStateCache[key];
                     expectedEnergy += probability * energy;
 
